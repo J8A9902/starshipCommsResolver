@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starshipcommsresolver-deployment
+spec:
+  replicas: 1  # You can adjust this number as needed
+  selector:
+    matchLabels:
+      app: starshipcommsresolver
+  template:
+    metadata:
+      labels:
+        app: starshipcommsresolver
+    spec:
+      containers:
+      - name: starshipcommsresolver
+        image: your-docker-repo/starshipcommsresolver:latest  # Update with your actual Docker image repository
+        ports:
+        - containerPort: 8080

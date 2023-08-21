@@ -6,20 +6,15 @@ import (
 	"starshipCommsResolver/internal/pkg/ports"
 )
 
-type service struct {
+type serviceSplit struct {
 	ports ports.CommunicationServices
 }
 
-func NewService(port ports.CommunicationServices) *service {
-	return &service{
-		ports: port,
-	}
+func NewServiceSplit(port ports.CommunicationServices) *serviceSplit {
+	return &serviceSplit{}
 }
 
-func (s *service) GetLocation(distances ...float32) (x, y float32) {
-	if len(distances) < 3 {
-		return 0, 0
-	}
+func (s *serviceSplit) GetLocation(distances ...float32) (x, y float32) {
 
 	// Coordenadas de los satélites
 	kenobiCoords := [2]float32{-500.0, -200.0}
@@ -62,7 +57,7 @@ func (s *service) GetLocation(distances ...float32) (x, y float32) {
 	return emisorX, emisorY
 }
 
-func (s *service) GetMessage(messages ...[]string) string {
+func (s *serviceSplit) GetMessage(messages ...[]string) string {
 
 	adjustedMessage := make([]string, 5)
 	// Itera sobre cada palabra en los mensajes y agrega al mensaje ajustado

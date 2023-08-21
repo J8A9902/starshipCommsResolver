@@ -1,17 +1,23 @@
 package starshipcommsresolver
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
 
+	services "starshipCommsResolver/internal/pkg/service"
+)
 
-func RegisterRoutes2(e *gin.Engine, authService auth.AuthService) {
+func RegisterRoutes2(e *gin.Engine) {
+	// Crear una instancia de CommunicationServices usando la función NewService
+	topsecretService := services.NewService(nil) // Puedes proporcionar un valor real si es necesario
+	topsecretHandler := newHandler(topsecretService)
+	var topsecretsplitService = services.NewServiceSplit(nil)
+	topsecretSplitHandler := newSplitHandler(topsecretsplitService)
 
-	//TopsecrestService := order.NewServiceOrder(orderRepo)
-	//topsecret := newHandler(orderService, nil)
+	// Registramos los endpoints y sus respectivos handlerss
+	e.POST("/topsecret/", topsecretHandler.topsecret)
+	e.POST("/topsecret_split/:satellite_name", topsecretSplitHandler.topsecretSplit)
+	e.GET("/topsecret_split/:satellite_name", topsecretSplitHandler.GetsecretSplit)
+	e.PATCH("/topsecret_split/:satellite_name", topsecretSplitHandler.PatchtopsecretSplit)
 
-
-	
-	// Registramos los endpoints y sus respectivos handlers
-	e.POST("/topsecret/", topsecret.)
-//	e.GET("/orders", authMiddleware.Authorize(permissions["GET:/orders"]), orderHandler.Get)
-
+	//	e.GET("/orders", authMiddleware.Authorize(permissions["GET:/orders"]), orderHandler.Get)
 }
