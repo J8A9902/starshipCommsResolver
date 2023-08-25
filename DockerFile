@@ -1,27 +1,28 @@
-# Use a multi-stage build for the Go application
-FROM golang:1.19 AS build
+# Etapa de construcción
+FROM golang:1.19-alpine AS build
 
 WORKDIR /app
 
+# Copia los archivos de descripción de dependencias
 COPY go.mod go.sum ./
 RUN go mod download
 
+# Copia todo el código fuente
 COPY . .
+
+# Compila la aplicación
 RUN CGO_ENABLED=0 GOOS=linux go build -o app .
 
-# Use a smaller base image suitable for Kubernetes
+# Etapa de producción
 FROM gcr.io/distroless/static:nonroot
 
 WORKDIR /app
 
-# Copy the binary from the build stage
+# Copia el binario de la etapa de construcción
 COPY --from=build /app/app .
 
-# Set the user ID for the non-root user in the image
-USER nonroot:nonroot
-
-# Expose the port your application will listen on
+# Expone el puerto
 EXPOSE 8080
 
-# Define the entrypoint command
+# Define el comando de entrada
 ENTRYPOINT ["./app"]

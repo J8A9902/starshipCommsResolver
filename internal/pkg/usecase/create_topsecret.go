@@ -32,10 +32,12 @@ func (uc *TopsecrestUseCase) CreateTopSecret(satellite *entity.SatelliteRequest)
 
 	Position.X, Position.Y = uc.topsecrestService.GetLocation(distance...)
 	if Position.X == 0 && Position.Y == 0 || Position.Message == "" {
-		return nil, fmt.Errorf("the position or the message cannot be determined", "error")
+		//return nil, fmt.Errorf("the position or the message cannot be determined", "error")
+		return nil, fmt.Errorf("the position or the message cannot be determined")
+
 	} else {
 		return &entity2.Response{
-			Posicion: entity2.Position{
+			Position: entity2.Position{
 				X:       Position.X,
 				Y:       Position.Y,
 				Message: Position.Message,

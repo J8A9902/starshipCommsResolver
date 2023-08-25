@@ -11,7 +11,7 @@ type data struct {
 }
 
 type Response struct {
-	Posicion any    `json:"posicion,omitempty" mask:"struct"`
+	Position any    `json:"position,omitempty" mask:"struct"`
 	Result   Result `json:"result"`
 }
 

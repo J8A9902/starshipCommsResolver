@@ -64,7 +64,7 @@ func (uc *TopsecretSplitUseCase) GetAll(satelliteName string, satellite *entity.
 		return nil, errors.New("Insufficient satellite positions")
 	} else {
 		return &entity2.Response{
-			Posicion: entity2.Position{
+			Position: entity2.Position{
 				X:       Position.X,
 				Y:       Position.Y,
 				Message: Position.Message,
