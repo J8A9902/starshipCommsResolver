@@ -1,6 +1,9 @@
 # starshipCommsResolver API
 starshipCommsResolver es un microservicio desarrollado en GO con el framework GIN, su desarrollo se realizo en una estructura hexagonal. Esta API proporciona una serie de ENDPOINT'S para desencriptar mensajes y triangular la ubiación de una nave respecto a 3 satelites del comando estelar acargo de Han Solo. 
 
+## Documentación detallada en Swagger
+En el repositorio se encuentra una carpeta llamada swagger, dentro hay un archivo en formato yaml que contiene la documentación en detalle de la API, para acceder se recomienda utilizar el siguiente editor: https://editor.swagger.io/
+
 ## Recibir información de los satelites y desencriptar
 POST /topsecret/kenobi
 
@@ -72,7 +75,7 @@ Para ejecutar este servicio localmente, sigue los siguientes pasos:
 - Ejecuta ./nombre-de-tu-binario para iniciar el servidor.
 - Accede a http://lcambiar para interactuar con el servicio localmente.
 
-## Acceder al proyecto en la nube
+## Video Presentación
 
 
 ### Autor
