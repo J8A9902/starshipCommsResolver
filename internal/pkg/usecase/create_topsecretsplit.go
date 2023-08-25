@@ -63,6 +63,8 @@ func (uc *TopsecretSplitUseCase) GetAll(satelliteName string, satellite *entity.
 	if Position.X == 0 && Position.Y == 0 || Position.Message == "" {
 		return nil, errors.New("Insufficient satellite positions")
 	} else {
+		satelliteDataMap = nil
+		satelliteDataMap = make(map[string]*entity.SatelliteData)
 		return &entity2.Response{
 			Position: entity2.Position{
 				X:       Position.X,
