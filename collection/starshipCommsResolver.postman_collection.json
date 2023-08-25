@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "0fca7a86-3dde-4379-9d15-90bffcd2f2c4",
+		"_postman_id": "bbd09472-22f3-4c62-a448-f99f4c00a50e",
 		"name": "starshipCommsResolver",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "6270260"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "20306858"
 	},
 	"item": [
 		{
@@ -11,23 +11,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:8080/topsecret_split/?satellite=kenobi",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"topsecret_split",
-						""
-					],
-					"query": [
-						{
-							"key": "satellite",
-							"value": "kenobi"
-						}
-					]
-				}
+				"url": "http://{{host}}:{{port}}/topsecret_split/kenobi"
 			},
 			"response": []
 		},
@@ -45,17 +29,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:9090/topsecret/",
-					"host": [
-						"localhost"
-					],
-					"port": "9090",
-					"path": [
-						"topsecret",
-						""
-					]
-				}
+				"url": "http://{{host}}:{{port}}/topsecret/"
 			},
 			"response": []
 		},
@@ -66,54 +40,48 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"distance\": 100.0,\n    \"message\":  [\"este\", \"\", \"\", \"mensaje\", \"\"]\n}",
+					"raw": "{\n    \"distance\": 100.0,\n    \"message\":  [\"\", \"es\", \"un\", \"\", \"\"]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:8080/topsecret_split/kenobi",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"topsecret_split",
-						"kenobi"
-					]
-				}
+				"url": "http://{{host}}:{{port}}/topsecret_split/kenobi"
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "PatchTopSecretSplit",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/topsecret_split/skywalker",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"topsecret_split",
-						"skywalker"
-					]
-				}
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "34.136.220.162",
+			"type": "string"
+		},
+		{
+			"key": "port",
+			"value": "80",
+			"type": "string"
 		}
 	]
 }
