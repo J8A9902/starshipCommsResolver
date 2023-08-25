@@ -45,15 +45,15 @@ paths:
         '405':
           description: Invalid input
           
-  /CreateTopSecretSplit:
+  /TopSecret_Split/NOM_SATELITE:
     post:
       tags:
         - StarshipCommsResolver
-      summary: agrega un nuevo Satelite
-      description: Recibe un arreglo de 3 satelites con nombre, distancia y mensaje. Triangula la distancia respecto a cada satelite y decifra el mensaje.
+      summary: Recibe informacion de un satelite
+      description: Recibe la distancia y mensaje de un solo satelite, lo acomula en un arreglo hasta tener la infromación de tres satelites distintos.
       operationId: addStarshipCommsResolverS
       requestBody:
-        description: Crea un nuevo satelite
+        description: Recibe informacion de un satelite
         content:
           application/json:
             schema:
